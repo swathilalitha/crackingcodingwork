@@ -1,0 +1,56 @@
+
+    public boolean oneAway(String s1,String s2)
+    {
+    int len1=s1.length();
+    int len2=s2.length();
+    if(len1==len2){
+        return verifyEditCountEqualCase(s1,s2,len1,len2);
+    }else if(java.lang.Math.abs(len1-len2)==1){
+        return verifyEditCountInequalCase(s1,s2,len1,len2);
+    }else{
+        return false;
+    }
+    }
+    public boolean verifyEditCountEqualCase(String s1,String s2,int length1,int length2)
+    {
+    int ct=0;
+    for(int i=0;i<length1;i++){
+        if(s1.charAt(i)!=s2.charAt(i)){
+            ct++;
+        }
+    }
+    
+    if(ct==1){
+        return true;
+    }
+       return false; 
+    }
+    public boolean verifyEditCountInequalCase(String s1,String s2,int length1,int length2){
+     int ct=1;//As these are already inequal one modification is in for count variable so initialising ct to 1 for the difference of length
+    int length=0;
+    if(length1<length2)
+    {
+        length=length1;
+    }else{
+        length=length2;
+    }
+    for(int i=0;i<length;i++){
+        
+        if(s1.charAt(i)!=s2.charAt(i)){
+            ct++;
+        }
+    }
+    if(ct>1){
+        return false;
+    }
+    return true;
+}
+
+
+
+sample input/output:
+pale pal: true
+pales pale: true
+pale bale: true
+pale bake: false
+ pale pac: false
