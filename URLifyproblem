@@ -1,0 +1,34 @@
+
+
+public char[] urLify(String input){
+        char[] input_arr=input.toCharArray();
+        int length=input.length();
+        int output_arr_length;
+        int spacecount=0;
+        for(int i=0;i<length;i++){
+            if(input_arr[i]==' '){
+                spacecount++;
+            }
+        }
+       int index=length+spacecount*2;
+       char[] output_Arr=new char[index];
+        for(int i=length-1;i>=0;i--){
+             if(input_arr[i]== ' '){
+                output_Arr[index-1]='0';
+                output_Arr[index-2]='2';
+                output_Arr[index-3]='$';
+                index=index-3;
+            }else{
+                output_Arr[index-1]=input_arr[i];
+                index--;
+            }
+        }
+        return output_Arr;
+    }
+    sample input:
+     String s1="Mr John Smith ";
+      String s2="welcome to my java world";
+    
+    sample output:
+    Mr$20John$20Smith$20
+    welcome$20to$20my$20java$20world
