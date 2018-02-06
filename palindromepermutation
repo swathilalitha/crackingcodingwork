@@ -1,0 +1,37 @@
+
+//solution to palindrome permutation: my way
+ public boolean palinPermutation(String s1){
+        int length=s1.length();
+        int oddct=0;
+        int[] input=new int[128];
+        for(int i=0;i<length;i++)
+        {
+            input[s1.charAt(i)]++;
+        }
+        if(length%2==0){
+            for(int i=0;i<input.length;i++){
+                if(input[i]%2!=0){
+                    return false;
+                }
+            }
+        }
+        else{
+             for(int i=0;i<input.length;i++){
+                if(input[i]%2!=0){
+                    oddct++;
+                }
+        }
+        if(oddct>1){
+            return false;
+        }
+    }
+    return true;
+    }
+    
+    sample input:
+    aabbbccd
+    aabbbccddwwxxssiioo
+    
+    sample output:
+    false
+    True
